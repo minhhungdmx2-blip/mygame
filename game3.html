@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Casino :D</title>
+    </head>
+    <style>
+        body
+        {
+            margin: 0;
+            height: 100vh;
+            background: linear-gradient(rgb(0, 0, 58), black)
+        }
+        #money
+        {
+            position:absolute;
+            left:0px;
+            top:-35px;
+            color:#ffffff;  
+            font-size:50px;
+            font-family:"Courier New", monospace;
+            font-weight:bolder;
+        }
+
+        #money_box
+        {
+            position: absolute;
+            width: 350px;
+            height: 40px;
+            left: 40px;
+            top: 30px;
+            background-color: #33333300;
+            border: 15px solid white;
+            border-radius: 10px;
+            color: white;
+            padding: 20px;
+        }
+
+        .box
+        {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            left: 0px;
+            top: 170px; 
+            background-color: #c1c1c1;
+            border: 10px solid white;
+            border-radius: 10px;
+            color: white;
+            padding: 20px;
+        }
+
+        #bet_box
+        {
+            position: absolute;
+            width: 370px;
+            height: 50px;
+            left: 670px;
+            top: 510px; 
+            background-color: #c1c1c1;
+            border: 5px solid white;
+            border-radius: 10px;
+            color: white;
+        }
+
+        #title
+        {
+            position:absolute;
+            left:490px;
+            top:-0px;
+            color:#ffffff;
+            font-size:100px;
+            font-family:"Courier New", monospace;
+            background: linear-gradient(red, gold);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+
+            font-weight:bolder;
+        }
+
+        #button
+        {
+            position: absolute;
+            width: 300px;
+            height: 40px;
+            left: 725px;
+            top: 450px; 
+            background-color: #ff0000;
+            border: 5px solid rgb(138, 0, 0);
+            border-radius: 10px;
+            color: rgb(255, 0, 0);
+            padding: 20px;
+        }
+
+        #button:hover
+        {
+            background-color: #d80202;
+            border: 5px solid rgb(108, 0, 0);
+        }
+
+        #roll
+        {
+            position: absolute;
+            width: 300px;
+            height: 40px;
+            left: 0px;
+            top: -40px; 
+            color:#ffffff;  
+            font-size:50px;
+            font-family:"Courier New", monospace;
+            font-weight:bolder;
+        }
+
+        .num
+        {   position: absolute;
+            left: 0px;
+            top: 50px;
+            color:#ffffff;  
+            font-size:200px;
+            font-family:monospace;
+            font-weight:bolder;
+            background: linear-gradient(red, gold);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .bet
+        {
+            position: absolute;
+            left: 0px;
+            top: -35px; 
+            color:#000000;  
+            font-size:50px;
+            font-family:"Courier New", monospace;
+            font-weight:bolder;
+        }
+
+        .change
+        {
+            position: absolute;
+            width: 59.6px;
+            height: 59.6px;
+            left: 0px;
+            top: 570px; 
+            background-color: #c1c1c1;
+            border: 5px solid white;
+            border-radius: 10px;
+            color: white;
+            padding: 0px;
+            display: flex;
+            justify-items: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .change:hover
+        {
+            background-color: #b8b7b7;
+            border: 5px solid rgb(196, 195, 195);
+        }
+
+    </style>
+    <body>
+
+        <div id = "money_box">
+            <h1 id = "money"></h1>
+        </div>
+
+        <h1 id = "title">
+            LUCKY MACHINE
+        </h1>
+
+        <button id = "button">
+            <h1 id = "roll" onclick="add()" >
+                Roll!
+            </h1>
+        </button>
+
+        <button id = "cha1" class = "change" onclick="plus()">
+            <h1 id = "ch1" class = "bet">
+                +
+            </h1>
+        </button>
+
+        <button id = "cha2" class = "change" onclick="minus()">
+            <h1 id = "ch2" class = "bet">
+                -
+            </h1>
+        </button>
+
+        <button id = "cha3" class = "change" onclick="allin()">
+            <h1 id = "ch3" class = "bet">
+                All In🤑
+            </h1>
+        </button>
+
+        <div id = "bet_box">
+            <h1 class = "bet" id = "bet1"></h1>
+        </div>
+
+        <audio src="sef/machine.mp3" id = "machine"></audio>
+        <audio src="sef/click.mp3" id = "click"></audio>
+        <script>
+            //generrate machinez
+            let box1 = document.createElement("div");
+            let box2 = document.createElement("div");
+            let box3 = document.createElement("div");
+            box1.className = "box"
+            box2.className = "box"
+            box3.className = "box"
+            box1.style.left = "500px"
+            box2.style.left = "750px"
+            box3.style.left = "1000px"
+            box2.style.borderRadius = "0px";
+            document.body.appendChild(box1)
+            document.body.appendChild(box2)
+            document.body.appendChild(box3)
+            let num1 = document.createElement("h1")
+            let num2 = document.createElement("h1")
+            let num3 = document.createElement("h1")
+            num1.className = "num"
+            num2.className = "num"
+            num3.className = "num"
+            num1.style.left = "570px"
+            num2.style.left = "820px"
+            num3.style.left = "1070px"
+            num1.textContent = "3"
+            num2.textContent = "6"
+            num3.textContent = "7"
+            document.body.appendChild(num1)
+            document.body.appendChild(num2)
+            document.body.appendChild(num3)
+            document.getElementById("ch1").style.top = "-35px"
+            document.getElementById("ch1").style.left = "10px"
+            document.getElementById("ch2").style.top = "-35px"
+            document.getElementById("ch2").style.left = "10px"
+            document.getElementById("ch3").style.top = "-30px"
+            document.getElementById("ch3").style.left = "30px"
+            document.getElementById("ch3").style.fontSize = "40px"
+            let cha1 = document.getElementById("cha1")
+            let cha2 = document.getElementById("cha2")
+            let cha3 = document.getElementById("cha3")
+            cha1.style.left = "670px"
+            cha2.style.left = "730px"
+            cha3.style.left = "790px"
+            cha3.style.width = "260px"
+
+            //other
+            let bool = false
+            mon = 100
+            bet = 0
+            document.getElementById("money").textContent = "💵 " + mon + "$"
+            document.getElementById("bet1").textContent = bet + "$"
+            //roll
+            let but = document.getElementById("button");
+            let luck = 1;
+
+            function sleep(ms)
+            {
+                return new Promise(resolve => setTimeout(resolve,ms))
+            }
+
+            function set_luck(a,b,c)
+            {
+                let luck1 = 0
+                if(a == c)
+                {
+                    luck1 += 0.2
+                }
+                if((a % 3 == 0 && b % 3 == 0) ||
+                    (c % 3 == 0 && b % 3 == 0)||
+                        (a % 3 == 0 && c % 3 == 0))
+                {
+                    luck1 += 0.3
+                }
+                if((a % 2 == 0 && b % 2 == 0) ||
+                    (c % 2 == 0 && b % 2 == 0)||
+                        (a % 2 == 0 && c % 2 == 0))
+                {
+                    luck1 += 0.3
+                }
+                if(a == b - 1 || b == c - 1)
+                {
+                    luck1 += 0.4
+                }
+                if(a == b + 1 || b == c + 1)
+                {
+                    luck1 += 0.4
+                }
+                if( a % 2 == 0 && b % 2 == 0 && c % 2 == 0)
+                {
+                    luck1 += 0.5
+                }
+                if(a == b || b == c)
+                {
+                    luck1 += 1
+                }
+                if(a % 3 == 0 && b % 3 == 0 && c % 3 == 0)
+                {
+                    luck1 += 1
+                }
+                if( a == b && b == c)
+                {
+                    luck1 += 1.5
+                }
+                if(a + b + c == 10)
+                {
+                    luck1 += 1.8
+                }
+                if( a == b - 2 && a == c - 4)
+                {
+                    luck1 += 1.8
+                }
+                if(a == b - 1 && b == c - 1)
+                {
+                    luck1 += 1.8
+                }
+                if(a == 7 && b == 7 && c == 7){
+                    luck1 += 7
+                }
+                if(a == 3 && b == 6 && c == 7)
+                {
+                    luck1 += 36
+                }
+                luck = luck1
+            }
+
+            function add()
+            {
+                if(bool || bet == 0)
+                {
+                    return
+                }
+                bool = true
+                mon -= bet
+                document.getElementById("money").textContent = "💵 " + mon + "$"
+                document.getElementById('click').play()
+                let a1 = Math.floor(Math.random() * 9)
+                let b1 = Math.floor(Math.random() * 9)
+                let c1 = Math.floor(Math.random() * 9)
+                let id = setInterval(function(){
+                    if(a1 >= 9)
+                    {
+                        a1 = 0
+                    }
+                    a1++
+                    num1.textContent = a1
+                }, 50)
+                setTimeout(function(){
+                    document.getElementById('machine').play()
+                    clearInterval(id)
+                },2000)
+
+                let id1 = setInterval(function(){
+                    if(b1 >= 9)
+                    {
+                        b1 = 0
+                    }
+                    b1++
+                    num2.textContent = b1
+                }, 50)
+                setTimeout(function(){
+                    document.getElementById('machine').play()
+                    clearInterval(id1)
+                },4000)
+
+                let id2 = setInterval(function(){
+                    if(c1 >= 9)
+                    {
+                        c1 = 0
+                    }
+                    c1++
+                    num3.textContent = c1
+                }, 50)
+                setTimeout(function(){
+                    document.getElementById('machine').play()
+                    bool = false
+                    set_luck(a1, b1, c1)
+                    mon += parseInt(bet * luck)
+                    luck = 0
+                    clearInterval(id2)
+                    setTimeout(() => {
+                        document.getElementById("money").textContent = "💵 " + parseInt(mon) + "$"
+                    },1000);
+                        if(bet > mon)
+                        {
+                            bet = 0
+                            document.getElementById("bet1").textContent = bet + "$"
+                        }
+                },6000)
+            }
+
+            //change
+            function plus()
+            {
+                if(bet < mon)
+                {
+                    bet += 10
+                    document.getElementById("bet1").textContent = bet + "$"
+                }
+            }
+            function minus()
+            {
+                if(bet > 0)
+                {
+                    bet -= 10
+                    document.getElementById("bet1").textContent = bet + "$"
+                }
+            }
+            function allin()
+            {
+                bet = mon
+                document.getElementById("bet1").textContent = bet + "$"
+            }   
+
+        </script>
+    </body>
+</html>
+//made by HungBB Dev
